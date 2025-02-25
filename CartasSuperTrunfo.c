@@ -1,16 +1,18 @@
 #include <stdio.h>
 
 int main() {
-
-    	//Aqui ficará armazenada as informações das variaveis da carta 1 que o usuario digitar conforme as funções printf e scanf
+   
+	//Aqui ficará armazenada as informações das variaveis da carta 1 que o usuario digitar conforme as funções printf e scanf
 	char estado = 'X';//A variavel "char" coletará apenas uma(1) letra
-	char codigo[4] = "X00";//A variavel "char" coletará três(3) caracteres 
+	char codigo[5] = "X00";//A variavel "char" coletará três(3) caracteres 
 	char cidade[25] = "XX";//A variavel "char" coletará um nome
 	int populacao = 00000;//A variavel "int" coletará um conjunto de digitos inteiros
 	float area = 00000.00;//A variavel "float" coletará um conjunto de digitos com casas decimais
 	float pib = 000.00;//A variavel "float" coletará um conjunto de digitos com casas decimais
 	int pontosturisticos = 000;//A variavel "int" coletará um conjunto de digitos inteiros
-    
+	float media;
+	float media1;
+
 	//Aqui ficará armazenada as informações das variaveis da carta 1 que o usuario digitar conforme as funções printf e scanf
 	char estado2 = 'X';
 	char codigo2[5] = "X00";
@@ -19,13 +21,15 @@ int main() {
 	float area2 = 00000.00;
 	float pib2 = 000.00;
 	int pontosturisticos2 = 000;
+	float media2;
+	float media3;
 
 	//Aqui ocorrerá a entrada de dados que o usuario digitar (Carta 1)
 	printf("INSIRA AS INFORMAÇÕES DA (CARTA 1)\n\n");
 	printf("1. Qual o estado? \nDica: Uma letra de (A a H)\n>");
 	scanf("%c", &estado);//o "%c" especifica o tipo de dado se espera que o usuário insira, enquanto "&" especifica qual variavel será lida
 
-   	printf("\n2. Qual o código carta? \nDica: A letra digitada anteriormente, mais dois digitos de (01 a 04)\n>");
+	   printf("\n2. Qual o código carta? \nDica: A letra digitada anteriormente, mais dois digitos de (01 a 04)\n>");
 	scanf("%s", &codigo);//o "%s" especifica o tipo de dado se espera que o usuário insira, enquanto "&" especifica qual variavel será lida
 
 	printf("\n3. Qual o nome da cidade? \nDica: Pode ser sua cidade :)\n>");
@@ -43,13 +47,16 @@ int main() {
 	printf("\n7. Quantos pontos turísticos essa cidade possui? \n>");
 	scanf("%d", &pontosturisticos);//o "%d" especifica o tipo de dado se espera que o usuário insira, enquanto "&" especifica qual variavel será lida
 
+	//Aqui é onde se faz a media das informações inseridas para obter o resultado da "densidade populacional por km²" e "pib per capita"
+	media = (float)(populacao + area) / 2;
+	media1 = (float)(pib + populacao) / 2;
 
 	//Aqui ocorrerá a entrada de dados que o usuario digitar (Carta 2)
 	printf("\n\nAGORA, INSIRA AS INFORMAÇÕES DA (CARTA 2)\n\n");
 	printf("2.1. Qual o estado? \nDica: Uma letra de (A a H)\n>");
 	scanf(" %c", &estado2);
 
-   	printf("\n2.2. Qual o código da carta? \nDica: A letra digitada anteriormente, mais dois digitos de (01 a 04)\n>");
+	   printf("\n2.2. Qual o código da carta? \nDica: A letra digitada anteriormente, mais dois digitos de (01 a 04)\n>");
 	scanf(" %s", &codigo2);
 
 	printf("\n2.3. Qual o nome da cidade? \nDica: Pode ser sua cidade vizinha :/\n>");
@@ -67,6 +74,9 @@ int main() {
 	printf("\n2.7. Quantos pontos turísticos essa cidade possui? \n>");
 	scanf(" %d", &pontosturisticos2);
 
+	media2 = (float)(populacao2 + area2) / 2;
+	media3 = (float)(pib2 + populacao2) / 2;
+
 	//Aqui exibirá as informações passadas pelo usuario as variaveis (Carta 1)
 	printf("\n\n==============================Resultado da Carta 1==============================\n");
 
@@ -74,9 +84,11 @@ int main() {
 	printf("Código da carta: %s\n", codigo);//o "%s" exibe uma cadeia (string) de caracteres da variavel "codigo"
 	printf("Nome da cidade: %s\n", cidade);//o "%s" exibe uma cadeia (string) de caracteres da variavel "cidade"
 	printf("População da cidade: %d\n", populacao);//o "%d" exibe um inteiro no formato decimal da variavel "populacao"
-	printf("Área: %.2fkm²\n", area);//o "%.2f" exibe um número de ponto flutuante no formato padrão da variavel "area" enquanto o limita em um centésimo
+	printf("Área: %.2f km²\n", area);//o "%.2f" exibe um número de ponto flutuante no formato padrão da variavel "area" enquanto o limita em um centésimo
 	printf("PIB: %.2f bilhões de reais\n", pib);//o "%.2f" exibe um número de ponto flutuante no formato padrão da variavel "pib" enquanto o limita em um centésimo
 	printf("Quantidade de pontos turísticos: %d\n", pontosturisticos);//o "%d" exibe um inteiro no formato decimal da variavel "pontosturisticos"
+	printf("Densidade Populacional: %.2f hab/km²\n", media);//o "%.2f" exibe um número de ponto flutuante no formato padrão da variavel "media" enquanto o limita em um centésimo
+	printf("PIB per Capita: %.2f reais\n", media1);//o "%.2f" exibe um número de ponto flutuante no formato padrão da variavel "media1" enquanto o limita em um centésimo
 
 	//Aqui exibirá as informações passadas pelo usuario as variaveis (Carta 2)
 	printf("\n\n==============================Resultado da Carta 2==============================\n");
@@ -85,11 +97,13 @@ int main() {
 	printf("Código da carta: %s\n", codigo2);
 	printf("Nome da cidade: %s\n", cidade2);
 	printf("População da cidade: %d\n", populacao2);
-	printf("Área: %.2fkm²\n", area2);
+	printf("Área: %.2f km²\n", area2);
 	printf("PIB: %.2f bilhões de reais\n", pib2);
-	printf("Quantidade de pontos turísticos: %d\n\n", pontosturisticos2);
+	printf("Quantidade de pontos turísticos: %d\n", pontosturisticos2);
+	printf("Densidade Populacional: %.2f hab/km²\n", media2);
+	printf("PIB per Capita: %.2f reais\n", media3);
 	
 	//Aqui vai mostrar que o programa chegou ao fim de suas funções
-	printf(">>Fim do programa<<\n\n");
-    return 0;
+	printf("\n>>Fim do programa<<\n\n");
+  return 0;
 }
